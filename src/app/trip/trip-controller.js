@@ -25,7 +25,7 @@
 
         function goHome() {
             trafiklab.getTrip(vm.workId,vm.homeId).then(function(result) {
-                    processResults(result, 'hem');
+                processResults(result, 'hem');
             });
         }
         
