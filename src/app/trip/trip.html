@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <h1>Pendla.nu</h1>
+    <p>Ta reda på när nästa tur till eller från jobbet går.</p>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" ng-class="{'active':vm.activeTab == 0}"><a ng-click='vm.activeTab = 0'>Nästa resa</a></li>
+    <li role="presentation" ng-class="{'active':vm.activeTab == 1}"><a ng-click='vm.activeTab = 1'>Stationer</a></li>
+</ul>
+
+<div ng-if='vm.activeTab == 0' class="row">
+
+
+    <div class="col-md-6">
+        <h3>
+            Välj om du vill resa till jobbet eller hem.  
+        </h3>
+        <p>
+            <button type="button" class="btn btn-lg btn-primary" ng-click='vm.goToWork()'>Åk till jobbet</button>
+            <button type="button" class="btn btn-lg btn-primary" ng-click='vm.goHome()'>Åk hem</button>
+        </p>
+        <div class="panel panel-success" ng-if='vm.activeTrip'>
+            <div class="panel-heading">
+                <h3 class="panel-title">Nästa resa {{vm.destinationText}}</h3>
+            </div>
+            <div class="panel-body">
+                <b>{{vm.trip.start}}</b> <i>({{vm.trip.startTime}})</i> - <b>{{vm.trip.finish}}</b> <i>({{vm.trip.finishTime}})</i>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div ng-if='vm.activeTab == 1' class="row">
+    <form>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Hemstation</label>
+                <input type="text" class="form-control" id="homeId" placeholder="Hemstationens ID" ng-value='vm.homeId'>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Jobbstation</label>
+                <input type="text" class="form-control" id="workId" placeholder="Jobbstationens ID" ng-value='vm.workId'>
+            </div>
+
+            </form>
+        </div>
+</div>
